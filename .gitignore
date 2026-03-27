@@ -1,0 +1,14 @@
+# Ignore tout
+*
+
+# Autoriser le fichier .gitignore
+!.gitignore
+
+# Autoriser la structure jusqu'au thème
+!wp-content/
+!wp-content/themes/
+!wp-content/themes/msbwb/
+!wp-content/themes/msbwb/**
+
+# Ne jamais versionner les secrets
+wp-config.php
