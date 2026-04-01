@@ -1,9 +1,11 @@
 <?php
-if (!defined('ABSPATH')) { exit; }
+if (!defined('ABSPATH')) {
+  exit;
+}
 
 add_action('wp_enqueue_scripts', function () {
 
-  // Custom CSS
+  // Global custom CSS
   wp_enqueue_style(
     'msbwb-custom',
     get_stylesheet_directory_uri() . '/assets/css/custom.css',
@@ -11,34 +13,47 @@ add_action('wp_enqueue_scripts', function () {
     '1.0.0'
   );
 
-  // Only load carousel assets on homepage
-  if (!is_front_page()) {
-    return;
+  wp_enqueue_style(
+    'msbwb-custom-utilities',
+    get_stylesheet_directory_uri() . '/assets/css/custom-utilities.css',
+    ['msbwb-custom'],
+    '1.0.0'
+  );
+
+  // Archive filters JS only on /archive/
+  if (is_page('archive')) {
+    wp_enqueue_script(
+      'msbwb-archive-filters',
+      get_stylesheet_directory_uri() . '/assets/js/archive-filters.js',
+      [],
+      '1.0.0',
+      true
+    );
   }
 
-  // Swiper
-wp_enqueue_style(
-  'swiper',
-  'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
-  [],
-  '10.0.0'
-);
+  // Homepage only
+  if (is_front_page()) {
+    wp_enqueue_style(
+      'swiper',
+      'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
+      [],
+      '10.0.0'
+    );
 
-wp_enqueue_script(
-  'swiper',
-  'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js',
-  [],
-  '10.0.0',
-  true
-);
+    wp_enqueue_script(
+      'swiper',
+      'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js',
+      [],
+      '10.0.0',
+      true
+    );
 
-
-  // Your carousel JS
-  wp_enqueue_script(
-    'msbwb-home-carousels',
-    get_stylesheet_directory_uri() . '/assets/js/msbwb-home-carousels.js',
-    ['swiper'],
-    '1.0.0',
-    true
-  );
+    wp_enqueue_script(
+      'msbwb-home-carousels',
+      get_stylesheet_directory_uri() . '/assets/js/msbwb-home-carousels.js',
+      ['swiper'],
+      '1.0.0',
+      true
+    );
+  }
 });
