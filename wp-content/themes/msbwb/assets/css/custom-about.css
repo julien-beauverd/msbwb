@@ -1,0 +1,41 @@
+.aboutContainer {
+  margin: 2% auto 0;
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.aboutContainer section {
+  width: 50%;
+  padding: 10px;
+  display: grid;
+  gap: 20px;
+}
+
+.aboutContainer div.block {
+  background: #1e1e1e;
+  padding: 20px;
+}
+
+.aboutContainer table {
+  border: none;
+}
+
+.aboutContainer table td {
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+
+.aboutContainer p {
+  margin: 0;
+  padding: 0;
+}
+
+body.page-id-6 h1 {
+  display: none;
+}
+
+body.page-id-6 main#main {
+  padding-top: 0;
+}

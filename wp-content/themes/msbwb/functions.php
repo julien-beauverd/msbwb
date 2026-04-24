@@ -20,14 +20,31 @@ add_action('wp_enqueue_scripts', function () {
     '1.0.0'
   );
 
-  // Archive filters JS only on /archive/
-  if (is_page('archive')) {
+  // Archive filters JS only on /podcasts/
+  if (is_page('podcasts')) {
     wp_enqueue_script(
-      'msbwb-archive-filters',
-      get_stylesheet_directory_uri() . '/assets/js/archive-filters.js',
+      'msbwb-podcasts-filters',
+      get_stylesheet_directory_uri() . '/assets/js/podcasts-filters.js',
       [],
       '1.0.0',
       true
+    );
+
+    wp_enqueue_style(
+      'msbwb-custom-podcasts',
+      get_stylesheet_directory_uri() . '/assets/css/custom-podcasts.css',
+      ['msbwb-custom'],
+      '1.0.0'
+    );
+  }
+
+  // Archive filters JS only on /about/
+  if (is_page('about')) {
+    wp_enqueue_style(
+      'msbwb-custom-about',
+      get_stylesheet_directory_uri() . '/assets/css/custom-about.css',
+      ['msbwb-custom'],
+      '1.0.0'
     );
   }
 
