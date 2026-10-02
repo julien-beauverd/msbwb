@@ -38,6 +38,24 @@ add_action('wp_enqueue_scripts', function () {
     );
   }
 
+  if (is_page('events')) {
+    wp_enqueue_style(
+      'msbwb-custom-events',
+      get_stylesheet_directory_uri() . '/assets/css/custom-events.css',
+      ['msbwb-custom'],
+      '1.0.0'
+    );
+  }
+
+  if (is_single()) {
+    wp_enqueue_style(
+      'msbwb-custom-poscast',
+      get_stylesheet_directory_uri() . '/assets/css/custom-podcast.css',
+      ['msbwb-custom'],
+      '1.0.0'
+    );
+  }
+
   // Archive filters JS only on /about/
   if (is_page('about')) {
     wp_enqueue_style(

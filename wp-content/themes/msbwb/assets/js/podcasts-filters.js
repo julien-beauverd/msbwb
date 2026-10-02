@@ -1,8 +1,63 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const filterButtons = document.querySelectorAll('.msbwb-filters [data-filter]');
   const posts = Array.from(document.querySelectorAll('.wp-block-post-template > li'));
+  const filtersContainer = document.querySelector('.msbwb-filters');
 
-  if (!filterButtons.length || !posts.length) return;
+  if (!posts.length || !filtersContainer) return;
+
+function formatTagName(tag) {
+  const specialCases = {
+    'hip-hop': 'Hip-Hop'
+  };
+
+  if (specialCases[tag]) {
+    return specialCases[tag];
+  }
+
+  return tag
+    .replace(/-/g, ' ')
+    .replace(/\b\w/g, char => char.toUpperCase());
+}
+
+  function getTagsFromPosts() {
+    const tags = new Set();
+
+    posts.forEach(post => {
+      post.classList.forEach(className => {
+        if (className.startsWith('tag-')) {
+          tags.add(className.replace('tag-', ''));
+        }
+      });
+    });
+
+    return Array.from(tags).sort();
+  }
+
+  function createFilters() {
+    const tags = getTagsFromPosts();
+
+    filtersContainer.innerHTML = '';
+
+    const allButton = document.createElement('button');
+    allButton.type = 'button';
+    allButton.dataset.filter = 'all';
+    allButton.className = 'is-active';
+    allButton.textContent = 'All';
+
+    filtersContainer.appendChild(allButton);
+
+    tags.forEach(tag => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.dataset.filter = tag;
+      button.textContent = formatTagName(tag);
+
+      filtersContainer.appendChild(button);
+    });
+  }
+
+  createFilters();
+
+  const filterButtons = document.querySelectorAll('.msbwb-filters [data-filter]');
 
   const DURATION = 320;
 
@@ -107,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
       applyFilter(filter);
 
       const url = new URL(window.location.href);
+
       if (filter === 'all') {
         url.searchParams.delete('tag');
       } else {

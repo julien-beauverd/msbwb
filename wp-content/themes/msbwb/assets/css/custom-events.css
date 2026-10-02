@@ -1,0 +1,25 @@
+.archive-table .hover-image img {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  max-width: 300px;
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.archive-table tr:hover .hover-image img {
+  opacity: 1;
+}
+
+.archive-table td {
+  border-color: transparent;
+}
+
+.archive-table .hover-image {
+  width: 340px;
+  position: relative;
+}
+
+.archive-title {
+  padding-top: 25px;
+}

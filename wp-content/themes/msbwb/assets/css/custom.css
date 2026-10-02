@@ -1,7 +1,6 @@
 @font-face {
   font-family: "MSBWB Font";
-  src: url("/wp-content/themes/msbwb/assets/fonts/Antarctica-msbwb.woff2")
-    format("woff2");
+  src: url("/wp-content/themes/msbwb/assets/fonts/Antarctica-msbwb.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -128,14 +127,63 @@ body.home h1 {
   display: none;
 }
 
+h2.fullwidth__title,
+body.home h2 {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0px 15px;
+}
+
+footer .mc_signup_form {
+  padding: 0 15px;
+}
+
+footer .mc_signup_form label,
+footer .mc_signup_form input {
+  font-family: var(--msbwb-font) !important;
+}
+
+footer .mc_signup_submit input {
+  margin: 0;
+  width: 100%;
+  padding: 0;
+}
+
+body.home img {
+  width: 100%;
+}
+
+body.home .ct-container-full {
+  padding-bottom: 0;
+}
+
+section.store {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0;
+}
+
 section.store div.row {
   display: flex;
   grid-gap: 24px;
-  margin-bottom: 24px;
   position: relative;
 }
 
-p.see-you {
+section.store .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem;
+  gap: 1.5rem;
+}
+
+.see-you {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0px 15px;
+}
+
+.see-you .text {
   position: absolute;
   left: 50%;
   top: 90%;
@@ -144,38 +192,38 @@ p.see-you {
   z-index: 1;
 }
 
-section.store div.row .text,
-section.store div.row .picture {
-  width: 50%;
+footer {
+  background: #000 !important;
 }
 
-footer {
-  display: none;
+footer .mc_signup_submit input {
+  background: var(--hover-msbwb);
+}
+
+footer .mc_signup_submit input:hover {
+  background: var(--hover-msbwb);
+}
+
+footer [data-column="widget-area-2"] .ct-widget {
+  margin-top: auto;
+  text-align: right;
 }
 
 .only-mobile {
   display: none;
 }
 
-.msbwb-filters {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
+#main .ct-related-posts-container {
+  background: #000;
 }
 
-.msbwb-filters button {
-  background: transparent;
-  border: 1px solid #fff;
-  padding: 8px 14px;
-  cursor: pointer;
-  color: #fff;
-  border-radius: 3px;
-}
-
-.msbwb-filters button.is-active {
-  border-color: var(--hover-msbwb);
-  color: var(--hover-msbwb);
+.ct-container,
+#main section.store,
+#main .wp-block-query,
+#main .wp-block-columns {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 15px;
 }
 
 @media (max-width: 768px) {
